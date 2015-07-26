@@ -61,6 +61,8 @@ function initialiseState()
           return;
         }
         console.log('test4');
+        var r1 = navigator.serviceWorker.ready();
+        console.log(r1);
         // We need the service worker registration to check for a subscription
         navigator.serviceWorker.ready.then(
                 /*  function(serviceWorkerRegistration) 
