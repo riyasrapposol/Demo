@@ -63,7 +63,7 @@ function initialiseState()
         console.log('test4');
         // We need the service worker registration to check for a subscription
         navigator.serviceWorker.ready.then(
-                  function(serviceWorkerRegistration) 
+                /*  function(serviceWorkerRegistration) 
                   {
                      console.log('test5');
                       // Do we already have a push message subscription?
@@ -90,8 +90,12 @@ function initialiseState()
                                                   // push messages
                                                   pushButton.textContent = 'Disable Push Messages';
                                                   isPushEnabled = true;
-                              }
-                              )
+                              }*/
+                             function(r) {
+      console.log('Serice Workder Ready: ');
+      //registration = r;
+      //console.log(registration);
+    } )
         .catch(function(err) {
         console.warn('Error during getSubscription()', err);
         });
