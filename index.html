@@ -3,7 +3,7 @@
 <head>
   <title>Simple Push Demo</title>
   <link rel="manifest" href="manifest.json">
-  <link rel="stylesheet" href="styles/main.css"></head>
+ </head>
 
 <script>
 var scope = 'hello/';
@@ -21,7 +21,7 @@ function register() {
       console.error(whut);
     });*/
     if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('/service-worker.js')
+        navigator.serviceWorker.register('service-worker.js', {scope: scope})
         .then(initialiseState);
         } else {
         console.warn('Service workers aren\'t supported in this browser.');
