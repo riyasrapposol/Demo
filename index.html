@@ -65,9 +65,9 @@ function initialiseState()
         if (navigator.serviceWorker.ready) 
         {
           console.log("ready resolved");
-          navigator.serviceWorker.ready.then(function(serviceWorkerRegistration)
+          navigator.serviceWorker.ready.then(function()
           {
-              console.log("ready resolved2",serviceWorkerRegistration);
+              console.log("ready resolved2")
           });
         }
         else
