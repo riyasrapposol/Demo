@@ -64,11 +64,19 @@ function initialiseState()
        
         if (navigator.serviceWorker.ready) 
         {
-          console.log("ready resolved");
-          navigator.serviceWorker.ready.then(function(serviceWorkerRegistration) { 
-            console.log("ready resolved2");
-            console.log(registration.scope); })
+            console.log("ready resolved");
           
+            navigator.serviceWorker.ready.then(function(serviceWorkerRegistration) {
+            // Check if this service worker supports push
+            if (!serviceWorkerRegistration.pushManager)
+            {
+              showError('Ooops Push Isn\'t Supported', 'This is most likely ' +
+                'down to the current browser doesn\'t have support for push. ' +
+                'Try Chrome M41.');
+              return;
+             }
+          
+          }
         }
         else
         {
