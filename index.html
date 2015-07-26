@@ -38,6 +38,7 @@ function unregister() {
 // Once the service worker is registered set the initial state
 function initialiseState() 
 {
+      console.log('test1');
         // Are Notifications supported in the service worker?
         if (!('showNotification' in ServiceWorkerRegistration.prototype)) {
         console.warn('Notifications aren\'t supported.');
