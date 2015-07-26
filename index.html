@@ -38,13 +38,13 @@ function unregister() {
 // Once the service worker is registered set the initial state
 function initialiseState() 
 {
-      console.log('test1');
+      
         // Are Notifications supported in the service worker?
         if (!('showNotification' in ServiceWorkerRegistration.prototype)) {
         console.log('Notifications aren\'t supported.');
         return;
         }
-        console.log('test2');
+       
         // Check the current Notification permission.
         // If its denied, it's a permanent block until the
         // user changes the permission
@@ -53,7 +53,7 @@ function initialiseState()
           console.log('The user has blocked notifications.');
           return;
         }
-        console.log('test3');
+       
         // Check if push messaging is supported
         if (!('PushManager' in window))
         {
@@ -65,9 +65,9 @@ function initialiseState()
         if (navigator.serviceWorker.ready) 
         {
           console.log("ready resolved");
-          navigator.serviceWorker.ready.then(function() 
+          navigator.serviceWorker.ready.then(function(serviceWorkerRegistration)
           {
-              console.log("ready resolved");
+              console.log("ready resolved2");
           });
         }
         else
