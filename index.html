@@ -66,17 +66,19 @@ function initialiseState()
         {
             console.log("ready resolved");
           
-            navigator.serviceWorker.ready.then(function(serviceWorkerRegistration) {
-            // Check if this service worker supports push
-            if (!serviceWorkerRegistration.pushManager)
+            navigator.serviceWorker.ready.then(function(serviceWorkerRegistration) 
             {
-              showError('Ooops Push Isn\'t Supported', 'This is most likely ' +
+              console.log("ready resolved1");
+              // Check if this service worker supports push
+              if (!serviceWorkerRegistration.pushManager)
+              {
+               /* showError('Ooops Push Isn\'t Supported', 'This is most likely ' +
                 'down to the current browser doesn\'t have support for push. ' +
-                'Try Chrome M41.');
-              return;
-             }
-          
-          }
+                'Try Chrome M41.');*/
+                console.log("ready resolved2");
+                return;
+              }
+            }
         }
         else
         {
