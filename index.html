@@ -19,7 +19,7 @@ var scope = 'hello/';
 var registration;
 
 function register() {
-  navigator.serviceWorker.register('service-worker.js', {scope: scope})
+ /* navigator.serviceWorker.register('service-worker.js', {scope: scope})
     .then(function(r) {
       console.log('registered: ');
       registration = r;
@@ -28,7 +28,13 @@ function register() {
     .catch(function(whut) {
       console.error('uh oh... ');
       console.error(whut);
-    });
+    });*/
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/service-worker.js')
+        .then(initialiseState);
+        } else {
+        console.warn('Service workers aren\'t supported in this browser.');
+        }
 }
 
 function unregister() {
