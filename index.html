@@ -64,11 +64,13 @@ function initialiseState()
        
         if (navigator.serviceWorker.ready) {
       navigator.serviceWorker.ready.then(function() {
-        log("ready resolved");
+        console.log("ready resolved");
       });
         }
         else
         {
+          console.log("ready not");
+          return;
         }
         }
         // We need the service worker registration to check for a subscription
