@@ -40,7 +40,7 @@ function initialiseState()
 {
       console.log('test1');
         // Are Notifications supported in the service worker?
-        if (!('showNotification' in ServiceWorkerRegistration.prototype)) {
+        if (!('showNotification' in ServiceWorkerRegistration.prototype)) {console.log('test3');
         console.warn('Notifications aren\'t supported.');
         return;
         }
