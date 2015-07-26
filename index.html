@@ -62,7 +62,7 @@ function initialiseState()
         }
         console.log('test4');
        
-        if (navigator.serviceWorker.ready) {
+        if (navigator.serviceWorker.ready) {console.log("ready resolved");
       navigator.serviceWorker.ready.then(function() {
         console.log("ready resolved");
       });
