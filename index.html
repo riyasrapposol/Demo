@@ -62,29 +62,36 @@ function initialiseState()
         }
         console.log('test4');
         // We need the service worker registration to check for a subscription
-        navigator.serviceWorker.ready.then(function(serviceWorkerRegistration) {
-        // Do we already have a push message subscription?
-        serviceWorkerRegistration.pushManager.getSubscription()
-        .then(function(subscription) {
-        // Enable any UI which subscribes / unsubscribes from
-        // push messages.
-        console.log('test3');
-        var pushButton = document.querySelector('.js-push-button');
-        pushButton.disabled = false;
-        if (!subscription) {
-        // We aren't subscribed to push, so set UI
-        // to allow the user to enable push
-        console.log('test4');
-        return;
-        }
-        console.log('test5');
-        // Keep your server in sync with the latest subscriptionId
-        sendSubscriptionToServer(subscription);
-        // Set your UI to show they have subscribed for
-        // push messages
-        pushButton.textContent = 'Disable Push Messages';
-        isPushEnabled = true;
-        })
+        navigator.serviceWorker.ready.then(
+                  function(serviceWorkerRegistration) 
+                  {
+                     console.log('test5');
+                      // Do we already have a push message subscription?
+                      serviceWorkerRegistration.pushManager.getSubscription()
+                      .then(
+                            function(subscription) 
+                            {
+                                                  // Enable any UI which subscribes / unsubscribes from
+                                                  // push messages.
+                                                  console.log('test6');
+                                                  var pushButton = document.querySelector('.js-push-button');
+                                                  pushButton.disabled = false;
+                                                  if (!subscription) 
+                                                  {
+                                                    // We aren't subscribed to push, so set UI
+                                                    // to allow the user to enable push
+                                                    console.log('test4');
+                                                    return;
+                                                  }
+                                                  console.log('test5');
+                                                  // Keep your server in sync with the latest subscriptionId
+                                                  sendSubscriptionToServer(subscription);
+                                                  // Set your UI to show they have subscribed for
+                                                  // push messages
+                                                  pushButton.textContent = 'Disable Push Messages';
+                                                  isPushEnabled = true;
+                              }
+                              )
         .catch(function(err) {
         console.warn('Error during getSubscription()', err);
         });
