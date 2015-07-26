@@ -44,6 +44,7 @@ function initialiseState()
         console.warn('Notifications aren\'t supported.');
         return;
         }
+        console.log('test2');
         // Check the current Notification permission.
         // If its denied, it's a permanent block until the
         // user changes the permission
@@ -64,13 +65,16 @@ function initialiseState()
         .then(function(subscription) {
         // Enable any UI which subscribes / unsubscribes from
         // push messages.
+        console.log('test3');
         var pushButton = document.querySelector('.js-push-button');
         pushButton.disabled = false;
         if (!subscription) {
         // We aren't subscribed to push, so set UI
         // to allow the user to enable push
+        console.log('test4');
         return;
         }
+        console.log('test5');
         // Keep your server in sync with the latest subscriptionId
         sendSubscriptionToServer(subscription);
         // Set your UI to show they have subscribed for
