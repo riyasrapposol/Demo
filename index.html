@@ -40,24 +40,27 @@ function initialiseState()
 {
       console.log('test1');
         // Are Notifications supported in the service worker?
-        if (!('showNotification' in ServiceWorkerRegistration.prototype)) {console.log('test3');
-        console.warn('Notifications aren\'t supported.');
+        if (!('showNotification' in ServiceWorkerRegistration.prototype)) {
+        console.log('Notifications aren\'t supported.');
         return;
         }
         console.log('test2');
         // Check the current Notification permission.
         // If its denied, it's a permanent block until the
         // user changes the permission
-        if (Notification.permission === 'denied') {
-        console.warn('The user has blocked notifications.');
-        
-        return;
-            }
-        // Check if push messaging is supported
-        if (!('PushManager' in window)) {
-        console.warn('Push messaging isn\'t supported.');
-        return;
+        if (Notification.permission === 'denied')
+        {
+          console.log('The user has blocked notifications.');
+          return;
         }
+        console.log('test3');
+        // Check if push messaging is supported
+        if (!('PushManager' in window))
+        {
+          console.warn('Push messaging isn\'t supported.');
+          return;
+        }
+        console.log('test4');
         // We need the service worker registration to check for a subscription
         navigator.serviceWorker.ready.then(function(serviceWorkerRegistration) {
         // Do we already have a push message subscription?
