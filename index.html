@@ -10,7 +10,19 @@ var scope = 'hello/';
 var registration;
 
 function register() {
-    console.log("ready resolved4");
+    
+    if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('service-worker.js').then(function(registration) {
+    if ('pushManager' in registration) {
+      console.log("ready resolved2");
+    } else {
+      console.log("ready resolved3");
+    }
+  });
+} else {
+  // The browser doesn't support service workers
+  console.log("ready resolved4");
+}
     return;
   /*  if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('service-worker.js', {scope: scope})
