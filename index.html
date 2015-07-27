@@ -65,20 +65,38 @@ function initialiseState()
         if (navigator.serviceWorker.ready) 
         {
             console.log("ready resolved");
-          
-            navigator.serviceWorker.ready.then(function(serviceWorkerRegistration) 
+          // https://example.com/webapp.js
+            navigator.serviceWorker.register('service-worker.js').then(
+              function(serviceWorkerRegistration) {
+                serviceWorkerRegistration.pushManager.subscribe().then(
+                  function(pushSubscription) {
+                    console.log("HI");
+                    //console.log(pushSubscription.endpoint);
+                    // The push subscription details needed by the application
+                    // server are now available, and can be sent to it using,
+                    // for example, an XMLHttpRequest.
+                  }, function(error) {
+                    // During development it often helps to log errors to the
+                    // console. In a production environment it might make sense to
+                    // also report information about errors back to the
+                    // application server.
+                    console.log(error);
+                  }
+                );
+              });
+          /*  navigator.serviceWorker.ready.then(function(serviceWorkerRegistration) 
             {
               console.log("ready resolved1");
               // Check if this service worker supports push
               if (!serviceWorkerRegistration.pushManager)
-              {
+              {*/
                /* showError('Ooops Push Isn\'t Supported', 'This is most likely ' +
                 'down to the current browser doesn\'t have support for push. ' +
                 'Try Chrome M41.');*/
-                console.log("ready resolved2");
+            /*    console.log("ready resolved2");
                 return;
               }
-            });
+            });*/
         }
         else
         {
