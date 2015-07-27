@@ -13,7 +13,15 @@ function register() {
   navigator.serviceWorker.register('service-worker.js', {scope: '/'})
     .then(function(r) {
       console.log('registered: ');
-      registration = r;
+      registration = r;i
+      if ('pushManager' in registration) {
+                  // The service worker supports push
+                    console.log("ready resolved2");
+                } 
+      if ('pushManager' in registration) {
+                  // The service worker supports push
+                    console.log("ready resolved2");
+                } 
       console.log(registration);
     })
     .catch(function(whut) {
