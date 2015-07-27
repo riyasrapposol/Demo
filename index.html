@@ -10,17 +10,7 @@ var scope = 'hello/';
 var registration;
 
 function register() {
-  navigator.serviceWorker.register('service-worker.js'})
-    .then(function(r) {
-      console.log('registered: ');
-      registration = r;
-     
-      console.log(registration);
-    })
-    .catch(function(whut) {
-      console.error('uh oh... ');
-      console.error(whut);
-    });
+    console.log("ready resolved4");
   /*  if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('service-worker.js', {scope: scope})
         .then(initialiseState);
