@@ -14,10 +14,7 @@ function register() {
     .then(function(r) {
       console.log('registered: ');
       registration = r;
-      if ('pushManager' in registration) {
-                  // The service worker supports push
-                    console.log("ready resolved2");
-                } 
+     
       console.log(registration);
     })
     .catch(function(whut) {
