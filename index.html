@@ -61,8 +61,8 @@ function initialiseState()
           return;
         }
         console.log('test4');
-       
-        navigator.serviceWorker.ready.then(function(serviceWorkerRegistration) {
+     
+        navigator.serviceWorker.ready.then(function(serviceWorkerRegistration) {console.log('test5');
       // Check if this service worker supports push
       if (!serviceWorkerRegistration.pushManager) {
         showError('Ooops Push Isn\'t Supported', 'This is most likely ' +
@@ -70,7 +70,7 @@ function initialiseState()
           'Try Chrome M41.');
         return;
       }
-console.log('test5');
+
       // Check if we have permission for push messages already
      /* serviceWorkerRegistration.pushManager.hasPermission().then(
         function(pushPermissionStatus) {
