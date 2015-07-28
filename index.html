@@ -27,8 +27,8 @@ function register() {
    if ('serviceWorker' in navigator) {
               navigator.serviceWorker.register('service-worker.js',{ scope: '/' }).then(function(registration) {
                   console.log("ready resolved1");
-              }
-   });
+              });
+   }
    return;
     /*else {
         console.warn('Service workers aren\'t supported in this browser.');
