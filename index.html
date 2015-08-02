@@ -95,10 +95,10 @@ function sendSubscriptionToServer(subscription) {
 function endpointWorkaround(subscription) {
   console.log('hi');
   // Make sure we only mess with GCM
-  if (subscription.endpoint.indexOf('https://android.googleapis.com/gcm/send') !== 0) {console.log(hi1);
+  if (subscription.endpoint.indexOf('https://android.googleapis.com/gcm/send') !== 0) {console.log('hi1');
     return subscription.endpoint;
   }
-console.log(hi2);
+console.log('hi2');
   var mergedEndpoint = subscription.endpoint;
   // Chrome 42 + 43 will not have the subscriptionId attached
   // to the endpoint.
