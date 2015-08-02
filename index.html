@@ -92,14 +92,14 @@ function sendSubscriptionToServer(subscription) {
 // This method handles the removal of subscriptionId
 // in Chrome 44 by concatenating the subscription Id
 // to the subscription endpoint
-function endpointWorkaround(pushSubscription) {
+function endpointWorkaround(subscription) {
   console.log('hi');
   // Make sure we only mess with GCM
-  if (pushSubscription.endpoint.indexOf('https://android.googleapis.com/gcm/send') !== 0) {console.log(hi1);
-    return pushSubscription.endpoint;
+  if (subscription.endpoint.indexOf('https://android.googleapis.com/gcm/send') !== 0) {console.log(hi1);
+    return subscription.endpoint;
   }
 console.log(hi2);
-  var mergedEndpoint = pushSubscription.endpoint;
+  var mergedEndpoint = subscription.endpoint;
   // Chrome 42 + 43 will not have the subscriptionId attached
   // to the endpoint.
   if (pushSubscription.subscriptionId &&
