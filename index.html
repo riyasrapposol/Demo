@@ -31,7 +31,8 @@ function register() {
                     registration.pushManager.getSubscription()  
       .then(function(subscription) {
                       document.getElementById("register").disabled = true;
-                     
+                    // Keep your server in sync with the latest subscriptionId
+                     sendSubscriptionToServer(subscription);
                                   
       });
                     
