@@ -36,10 +36,10 @@ function register() {
                   if ('pushManager' in registration) {
                     
                     registration.pushManager.getSubscription()  
-      .then(function(subscription) {
+      .then(function(pushSubscription) {
                       document.getElementById("register").disabled = true;
                     // Keep your server in sync with the latest subscriptionId
-                     sendSubscriptionToServer(subscription);
+                     sendSubscriptionToServer(pushSubscription);
                                   
       });
                     
