@@ -27,11 +27,14 @@ function register() {
    if ('serviceWorker' in navigator) {
               navigator.serviceWorker.register('service-worker.js').then(function(registration) {
                   if ('pushManager' in registration) {
-                    // Are Notifications supported in the service worker?  
-                            if (('showNotification' in ServiceWorkerRegistration.prototype)) {  
-                              console.log("ready resolved4");
-                              return;  
-                            }
+                    
+                    serviceWorkerRegistration.pushManager.getSubscription()  
+      .then(function(subscription) {
+                      document.getElementById("register").disabled = true;
+                     
+                                  
+      });
+                    
                         console.log("ready resolved2");
                       } else {
                         console.log("ready resolved3");
@@ -200,8 +203,8 @@ function initialiseState()
     
 </script>
 <body>
-    
-<button onclick="register()">Register</button>
+  
+<button id="register" onclick="register()">Register</button>
 <button onclick="unregister()">Unregister</button>
 
 <p>Some nice places to visit:
