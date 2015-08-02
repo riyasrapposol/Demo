@@ -28,7 +28,7 @@ function register() {
               navigator.serviceWorker.register('service-worker.js').then(function(registration) {
                   if ('pushManager' in registration) {
                     
-                    serviceWorkerRegistration.pushManager.getSubscription()  
+                    registration.pushManager.getSubscription()  
       .then(function(subscription) {
                       document.getElementById("register").disabled = true;
                      
