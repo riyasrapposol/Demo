@@ -43,7 +43,7 @@ function register() {
                                   
     //  });
                     registration.pushManager.subscribe({userVisibleOnly: true}).then(
-      function(pushSubscription) {
+      function(pushSubscription) { console.log("ready resolved3");
         console.log(pushSubscription.endpoint);
       });
                         console.log("ready resolved2");
