@@ -35,14 +35,17 @@ function register() {
               navigator.serviceWorker.register('service-worker.js').then(function(registration) {
                   if ('pushManager' in registration) {
                     
-                    registration.pushManager.getSubscription()  
-      .then(function(pushSubscription) {
-                      document.getElementById("register").disabled = true;
-                    // Keep your server in sync with the latest subscriptionId
-                     sendSubscriptionToServer(pushSubscription);
+                   // registration.pushManager.getSubscription()  
+      //.then(function(pushSubscription) {
+      //                document.getElementById("register").disabled = true;
+      //              // Keep your server in sync with the latest subscriptionId
+      //               sendSubscriptionToServer(pushSubscription);
                                   
+    //  });
+                    registration.pushManager.subscribe().then(
+      function(pushSubscription) {
+        console.log(pushSubscription.endpoint);
       });
-                    
                         console.log("ready resolved2");
                       } else {
                         console.log("ready resolved3");
