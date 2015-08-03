@@ -83,14 +83,14 @@ function sendSubscriptionToServer(subscription) {
   //
   // For compatibly of Chrome 43, get the endpoint via
 
- // endpointWorkaround(subscription)
+ endpointWorkaround(subscription)
 
 
- // var mergedEndpoint = endpointWorkaround(subscription);
- console.log('Insided');
+  var mergedEndpoint = endpointWorkaround(subscription);
+
   // This is just for demo purposes / an easy to test by
   // generating the appropriate cURL command
- // showCurlCommand(mergedEndpoint);
+ showCurlCommand(mergedEndpoint);
 }
 
 
@@ -105,7 +105,7 @@ function endpointWorkaround(subscription) {
   if (subscription.endpoint.indexOf('https://android.googleapis.com/gcm/send') !== 0) {console.log('hi1');
     return subscription.endpoint;
   }
-console.log('hi2');
+
   var mergedEndpoint = subscription.endpoint;
   // Chrome 42 + 43 will not have the subscriptionId attached
   // to the endpoint.
@@ -117,7 +117,23 @@ console.log('hi2');
   }
   return mergedEndpoint;
 }
+function showCurlCommand(mergedEndpoint) {
+  // The curl command to trigger a push message straight from GCM
+  if (mergedEndpoint.indexOf(GCM_ENDPOINT) !== 0) {
+    window.Demo.debug.log('This browser isn\'t currently ' +
+      'supported for this demo');
+    return;
+  }
 
+  var endpointSections = mergedEndpoint.split('/');
+  var subscriptionId = endpointSections[endpointSections.length - 1];
+
+  var curlCommand = 'curl --header "Authorization: key=' + API_KEY +
+    '" --header Content-Type:"application/json" ' + GCM_ENDPOINT +
+    ' -d "{\\"registration_ids\\":[\\"' + subscriptionId + '\\"]}"';
+ console.log(curlCommand);
+  curlCommandDiv.textContent = curlCommand;
+}
 function unregister() {
   registration.unregister()
     .then(function() {
