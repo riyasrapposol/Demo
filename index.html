@@ -42,7 +42,7 @@ function register() {
       //               sendSubscriptionToServer(pushSubscription);
                                   
     //  });
-                    registration.pushManager.subscribe().then(
+                    registration.pushManager.subscribe({userVisibleOnly: true}).then(
       function(pushSubscription) {
         console.log(pushSubscription.endpoint);
       });
