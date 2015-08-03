@@ -132,7 +132,7 @@ function showCurlCommand(mergedEndpoint) {
     '" --header Content-Type:"application/json" ' + GCM_ENDPOINT +
     ' -d "{\\"registration_ids\\":[\\"' + subscriptionId + '\\"]}"';
  
- document.getElementById("curl").Value = curlCommand;
+ document.getElementById("curl").value = curlCommand;
  
  console.log(curlCommand);
  // curlCommandDiv.textContent = curlCommand;
