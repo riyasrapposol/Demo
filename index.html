@@ -131,6 +131,9 @@ function showCurlCommand(mergedEndpoint) {
   var curlCommand = 'curl --header "Authorization: key=' + API_KEY +
     '" --header Content-Type:"application/json" ' + GCM_ENDPOINT +
     ' -d "{\\"registration_ids\\":[\\"' + subscriptionId + '\\"]}"';
+ 
+ document.getElementById("curl").Value = curlCommand;
+ 
  console.log(curlCommand);
  // curlCommandDiv.textContent = curlCommand;
 }
@@ -286,6 +289,7 @@ function initialiseState()
 <li><button class="js-push-button" disabled>
 Enable Push Messages
 </button></li>
+<textarea id="curl"> </textarea>
 </ul>
 </body></html>
 
