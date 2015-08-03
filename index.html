@@ -45,12 +45,14 @@ function register() {
    
                     registration.pushManager.subscribe({userVisibleOnly: true}).then(
       function(pushSubscription) { console.log("ready resolved3");
-        console.log(pushSubscription.endpoint);
-      }); console.log(registration);
-                        console.log("ready resolved2");
-                      } else {
-                        console.log("ready resolved3");
-                      }
+      
+      document.getElementById("register").disabled = true;
+       // Keep your server in sync with the latest subscriptionId
+       sendSubscriptionToServer(pushSubscription);
+      
+      }); 
+                       
+                     
               });
    }
    return;
@@ -80,11 +82,12 @@ function sendSubscriptionToServer(subscription) {
   // push message at a later date
   //
   // For compatibly of Chrome 43, get the endpoint via
-  // endpointWorkaround(subscription)
+
+ // endpointWorkaround(subscription)
 
 
-  var mergedEndpoint = endpointWorkaround(subscription);
- console.log(mergedEndpoint);
+ // var mergedEndpoint = endpointWorkaround(subscription);
+ console.log('Insided');
   // This is just for demo purposes / an easy to test by
   // generating the appropriate cURL command
  // showCurlCommand(mergedEndpoint);
